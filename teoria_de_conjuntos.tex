@@ -16,6 +16,10 @@
 \usepackage{amssymb}
 \usepackage{amsthm}
 
+% Paquetes para gráficos
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
 % --- Inicio del documento ---
 \begin{document}
 \maketitle
@@ -51,7 +55,7 @@ El conjunto vacío cumple con:
 \begin{itemize}
     \item Se representa mediante $\emptyset$ o $\{\}$. 
     \item No contiene ningún elemento.
-    \item Es único (se demuestra en el apartado de "Propiedades y demostraciones").
+    \item Es único (se demuestra en el apartado "6 Propiedades y demostraciones").
     \item Es subconjunto de cualquier otro conjunto.
 \end{itemize}  
 
@@ -156,7 +160,9 @@ Por asociatividad tenemos:
 
 $(x \in A \lor x \in B) \lor x \in C \implies x \in (A \cup B) \cup C$
 
-\textbf{Segunda parte:} $(A \cup B) \cup C \subseteq A \cup (B \cup C)$
+\textbf{Segunda parte:} 
+
+$(A \cup B) \cup C \subseteq A \cup (B \cup C)$
 
 \underline{Hipótesis:} Sea $x \in (A \cup B) \cup C$
 
@@ -168,13 +174,15 @@ Por propiedad asociativa se tiene que:
 
 $x \in A \lor (x \in B \lor x \in C) \implies x \in A \cup (B \cup C)$
 
-Q.E.D
+$\qed$
 
 \textit{Ejemplo:}
 
 Demostrar que $A \cup \emptyset = A$
 
-\textbf{Primera parte:} $A \cup \emptyset \subseteq A$
+\textbf{Primera parte:} 
+
+$A \cup \emptyset \subseteq A$
 
 \underline{Hipótesis:} Sea $x \in A \cup \emptyset$
 
@@ -182,25 +190,29 @@ Se tiene que:
 
 $x \in A \lor x \in \emptyset$
 
-Por definición de \textbf{conjunto vacío} sabemos que $x \in \emptyset$ es una proposición falsa
+Por definición de \textbf{conjunto vacío} sabemos que $x \in \emptyset$ es una proposición falsa.
 
-Para que la disyunción: $x \in A \lor x \in \emptyset$ sea cierta se debe cumplir que $x \in A$
+Para que la disyunción $x \in A \lor x \in \emptyset$ sea cierta se debe cumplir que $x \in A$.
 
-\textbf{Segunda parte:} $A \subseteq A \cup \emptyset$
+\textbf{Segunda parte:} 
+
+$A \subseteq A \cup \emptyset$
 
 \underline{Hipótesis:} Sea $x \in A$
 
-En la disyunción $x \in A \lor x \in \emptyset$, la proposición $x \in A$ es cierta por hipótesis
+En la disyunción $x \in A \lor x \in \emptyset$, la proposición $x \in A$ es cierta por hipótesis.
 
-Por lo tanto, la disyunción completa es cierta: $x \in A \cup \emptyset$
+Por lo tanto, la disyunción completa es cierta: $x \in A \cup \emptyset$.
 
-Q.E.D.
+$\qed$
 
 \section{Producto cartesiano}
 
-Es el conjunto de todos los pares ordenados $(a, b)$ donde $a \in A$ y $b \in B$
+Es el conjunto de todos los pares ordenados $(a, b)$ donde $a \in A$ y $b \in B$.
 
-Formalmente: $A \times B = \{(a,b) \mid a \in A \land b \in B \}$
+Formalmente: 
+
+\[A \times B = \{(a,b) \mid a \in A \land b \in B \}\]
 
 \textit{Ejemplo:}
 
@@ -208,9 +220,9 @@ Si $A = \{1, 2\}$ y $B = \{x, y\}$, tenemos que:
 
 $A \times B = \{ (1, x), (1, y), (2, x), (2, y) \}$
 
-\textbf{Propiedad (Cardinalidad):}
+\subsection{Propiedad de cardinalidad:}
 
-Si $A$ y $B$ son finitos se tiene que:
+Si $A$ y $B$ son conjuntos finitos se tiene que:
 
 \[ \left|A \times B\right| = \left|A\right| \times \left|B\right| \]
 
@@ -224,11 +236,11 @@ También conocido como \textbf{conjunto potencia}. Es el conjunto de todos los s
 
 Si $A = \{1, 2\}$ entonces $P(A) = \{\emptyset, \{1\}, \{2\}, \{1, 2\} \}$
 
-\textbf{Teorema:} Si $A$ es un conjunto finito con $n$ elementos, entonces $P(A)$ tiene $2^n$ elementos (la demostración se realiza en la parte de inducción matemática)
+\subsection{Teorema 1:} Si $A$ es un conjunto finito con $n$ elementos, entonces $P(A)$ tiene $2^n$ elementos (la demostración se realiza en el apartado "10 Principio de inducción").
 
 \section{Aplicaciones o funciones}
 
-Una aplicación $f$ de un conjunto $A$ (llamado \textbf{dominio}) a un conjunto $B$ (llamado \textbf{codominio}), denotado por: $A \to B$, es una relación que asigna a cada elemento $a \in A$ un \textbf{único} elemento $b \in B$
+Una aplicación $f$ de un conjunto $A$ (llamado \textbf{dominio}) a un conjunto $B$ (llamado \textbf{codominio}), denotado por: $A \to B$, es una relación que asigna a cada elemento $a \in A$ un \textbf{único} elemento $b \in B$.
 
 Formalmente:
 
@@ -240,31 +252,33 @@ Una función $f: A \to B$ es un subconjunto del producto cartesiano $A \times B$
     \item \textbf{Imagen (Rango):} Es el conjunto $\text{Im}(f) = \{f(a) \mid a \in A\}$, donde se cumple que $\text{Im}(f) \subseteq B$
 \end{itemize}
 
-\textbf{Tipos de funciones}
+\subsection{Tipos de funciones}
 
 \textbf{a) Inyectiva (uno a uno):} Elementos distintos del dominio tienen imágenes distintas.
     
-$f: A \to B$ es inyectiva si $\forall a_1, a_2 \in A (f(a_1) = f(a_2) \implies a_1 = a_2)$
+\[f: A \to B \text{ es inyectiva si } \forall a_1, a_2 \in A (f(a_1) = f(a_2) \implies a_1 = a_2)\]
 
 \textit{Ejemplo:}
 
-Demostrar que $f: \mathbb{R} \to \mathbb{R}$ definida por $f(x) = 2x + 1$ es inyectiva
+Demostrar que $f: \mathbb{R} \to \mathbb{R}$ definida por $f(x) = 2x + 1$ es inyectiva.
 
-Supongamos que $f(a) = f(b)$, para cualesquiera $a, b \in \mathbb{R}$
+Supongamos que $f(a) = f(b)$, para cualesquiera $a, b \in \mathbb{R}$.
 
 Tenemos que: $2a + 1 = 2b + 1$
 
 Por \textbf{propiedad de cancelación}: $2a = 2b \implies 2a - 2b = 0 \implies 2(a - b) = 0$
 
-Lo anterior implica que: $a - b = 0 \implies a = b$
+Lo anterior implica que $a - b = 0 \implies a = b$
 
 Por lo tanto, la función $f(x)$ es inyectiva.
 
+$\qed$
+
 \textit{Ejemplo:}
 
-Demostrar que $f: \mathbb{R} \to \mathbb{R}$, definida por $f(x) = x^2$ es inyectiva
+Demostrar que $f: \mathbb{R} \to \mathbb{R}$, definida por $f(x) = x^2$ es inyectiva.
 
-Supongamos que $f(a) = f(b)$, para cualesquiera $a, b \in \mathbb{R}$
+Supongamos que $f(a) = f(b)$, para cualesquiera $a, b \in \mathbb{R}$.
 
 Entonces: $a^2 = b^2 \implies a^2 - b^2 = 0 \implies (a - b)(a + b) = 0$
 
@@ -282,17 +296,19 @@ $f(a) = f(b)$ no implica necesariamente que $a = b$
 
 Por lo tanto, la función $f(x)$ no es inyectiva.
 
+$\qed$
+
 \textbf{b) Sobreyectiva:} El rango cubre completamente el codominio.
     
-$f: A \to B$ es sobreyectiva si $\forall b \in B, \exists a \in A \mid f(a) = b$
+\[f: A \to B \text{ es sobreyectiva si } \forall b \in B, \exists a \in A \mid f(a) = b\]
 
 En otras palabras: $\text{Im}(f) = B$
 
 \textit{Ejemplo:}
 
-Demostrar si la función $f: \mathbb{R} \to \mathbb{R}, f(x) = 2x + 1$ es sobreyectiva 
+Demostrar si la función $f: \mathbb{R} \to \mathbb{R}, f(x) = 2x + 1$ es sobreyectiva. 
 
-Sea $y \in \mathbb{R}$ arbitrario, queremos demostrar que existe $x \in \mathbb{R}$ tal que $f(x) = y$
+Sea $y \in \text{Codom}(f) = \mathbb{R}$ arbitrario, queremos demostrar que existe $x \in \text{Dom}(f) = \mathbb{R}$ tal que $f(x) = y$
 
 Tenemos que $y = 2x + 1 \implies y - 1 = 2x \implies x = \frac{y - 1}{2}$
 
@@ -300,13 +316,15 @@ Evaluamos $x$ en nuestra función $f$:
 
 $f(x) = 2x + 1 = 2(\frac{y - 1}{2}) + 1 = y - 1 + 1 = y$ 
 
-Como $y \in \mathbb{R}$, el valor de $x = \frac{y - 1}{2}$ está bien definido para $\mathbb{R}$, implica que para cualquier $y \in \mathbb{R}$ existe al menos un $x \in \mathbb{R}$ Q.E.D.
+Como $y \in \text{Codom}(f) = \mathbb{R}$, el valor de $x = \frac{y - 1}{2}$ está bien definido para $ \text{Dom}(f) = \mathbb{R}$, implica que para cualquier $y \in \text{Codom}(f) = \mathbb{R}$ existe al menos un $x \in \text{Dom}(f) = \mathbb{R}$
 
 Por lo tanto, la función $f$ es sobreyectiva.
 
+$\qed$
+
 \textit{Ejemplo:}
 
-Demostrar que la función $f: \mathbb{R} \to \mathbb{R}^+ \cup \{0\}$, definida por $f(x) = x^2$ es sobreyectiva
+Demostrar que la función $f: \mathbb{R} \to \mathbb{R}^+ \cup \{0\}$, definida por $f(x) = x^2$ es sobreyectiva.
 
 Sea $y \in \mathbb{R}^+ \cup \{0\}$ arbitrario, queremos demostrar que existe $x \in \mathbb{R}$ tal que $f(x)= y$
 
@@ -316,13 +334,15 @@ Evaluamos $x$ en la función $f$:
 
 $f(x) = x^2 = (\pm \sqrt{y})^2 = y$
 
-Como $y \ge 0$, el valor $x = \pm \sqrt{y}$ está bien definido en $\mathbb{R}$. Esto implica que para cualquier $y \in \mathbb{R}^+ \cup \{0\}$ existe al menos un $x \in \mathbb{R}$ Q.E.D.
+Como $y \ge 0$, el valor $x = \pm \sqrt{y}$ está bien definido en $\mathbb{R}$. Esto implica que para cualquier $y \in \mathbb{R}^+ \cup \{0\}$ existe al menos un $x \in \mathbb{R}$.
 
 Por lo tanto, la función $f$ es sobreyectiva.
 
+$\qed$
+
 \textbf{c) Biyectiva:} Una función es biyectiva si es inyectiva y sobreyectiva al mismo tiempo.
 
-\textbf{Funciones inversas y composición:}
+\subsection{Funciones inversas y composición}
 
 \textbf{a) Función inversa:} Una función $f: A \to B$ tiene una función inversa $f^{-1}: B \to A$, si y solo si es $f$ es una función biyectiva.
 
@@ -346,6 +366,8 @@ También podemos evaluar $f^{-1}$ en $f$:
 
 $f(f^{-1}) = 3(\frac{x + 1}{3}) - 1 = x + 1 - 1 = x$
 
+$\qed$
+
 \textit{Ejemplo:}
 
 Demostrar si la función $f: \left[0, \infty\right) \to \left[-1, \infty\right)$, definida por $f(x) = x^2 - 1$ tiene inversa $f^{-1}$
@@ -366,7 +388,7 @@ Como $a, b \in \left[0, \infty \right)$, implica que $a$ y $b$ son positivos o i
 
 Entonces, no se puede dar que $a \neq b$, ya que nuestro producto nunca podría ser igual que cero.
 
-Por lo tanto, $a = b$ Q.E.D.
+Por lo tanto, $a = b$
 
 b) Demostrar que $f$ es sobreyectiva:
 
@@ -380,7 +402,7 @@ Evaluamos $x$ en la función $f$:
 
 $f(x) = x^2 - 1 = (\sqrt{y + 1})^2 - 1 = y + 1 - 1 = y$
 
-Como $y \ge -1$, entonces $x = \sqrt{y + 1}$ está bien definido en $\left[0, \infty \right)$, implica que para cualquier $y \in \left[-1, \infty \right)$ existe un único (ya demostramos que $f$ es inyectiva) $x \in \left[0, \infty \right)$ Q.E.D.
+Como $y \ge -1$, entonces $x = \sqrt{y + 1}$ está bien definido en $\left[0, \infty \right)$, implica que para cualquier $y \in \left[-1, \infty \right)$ existe un único (ya demostramos que $f$ es inyectiva) $x \in \left[0, \infty \right)$
 
 Por lo tanto, la función $f$ es sobreyectiva.
 
@@ -394,13 +416,46 @@ Nuevamente, como $x \in \left[0, \infty \right)$, debemos desestimar la parte ne
 
 $f^{-1}: \left[-1, \infty \right) \to \left[0, \infty \right)$, definida por $f^{-1}(x) = \sqrt{x + 1}$
 
+$\qed$
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+    axis lines = middle,
+    xlabel = {$x$},
+    ylabel = {$y$},
+    ymin=-1.5, ymax=4.5,
+    xmin=-1.5, xmax=3.5,
+    grid = major,
+    width=7.5cm, height=6cm,
+    legend pos=north east,
+    legend style={font=\small},
+    xtick = {-1, 0, 1, 2, 3},
+    ytick = {-1, 0, 1, 2, 3}
+]
+% Función f(x)
+\addplot [blue, thick, domain=0:2.3] {x^2 - 1};
+\addlegendentry{$f(x)$}
+
+% Función inversa
+\addplot [red, thick, dashed, domain=-1:3] {sqrt(x + 1)};
+\addlegendentry{$f^{-1}(x)$}
+
+% Función identidad
+\addplot [gray, thin, domain=-1.5:3.5, forget plot] {x};
+\end{axis}
+\end{tikzpicture}
+\caption{Gráfica de la función y su inversa.}
+\end{figure}
+
 \textbf{b) Composición:} Sean dos funciones:
 
 $g: A \to B$ (función interna)
 
 $f: C \to D$ (función externa)
 
-La \textbf{función compuesta} $(f \circ g)$ es una nueva función que va desde el dominio de la \textbf{función interna} hasta el codominio de \textbf{función externa}, si y solo si, los valores que salen de la función interna pueden ser procesados por la función externa.
+La \textbf{función compuesta} $(f \circ g)$ es una nueva función que va desde el dominio de la \textbf{función interna} hasta el codominio de \textbf{función externa}, si y solo si los valores que salen de la función interna pueden ser procesados por la función externa.
 
 \textbf{Condición de existencia:} Para que $(f \circ g)$ esté bien definida se debe cumplir que:
 
