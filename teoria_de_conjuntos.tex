@@ -1,0 +1,1058 @@
+\documentclass{article}
+
+% Título del artículo
+\title{Teoría de Conjuntos}
+\author{Edwin Leonel Lee Tiño}
+\date{\today}
+
+% Paquetes configurar página
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{parskip}
+\usepackage{xcolor}
+\usepackage{float}
+
+% Paquetes matemáticos
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+
+% --- Inicio del documento ---
+\begin{document}
+\maketitle
+
+\section{Conjunto}
+
+Un conjunto es una colección bien definida de objetos distintos, llamados \textbf{elementos}. Por "bien definida" entendemos que podemos decidir sin ambigüedad si un objeto dado pertenece o no a la colección.
+
+\textit{Ejemplo:}
+
+El conjunto de los días de la semana está bien definido. El conjunto de las "personas altas" no lo está, a menos que fijemos un criterio, por ejemplo "mayores de 1.80m".
+
+\section{Notación}
+
+$x \in A$ que se lee "$x$ pertenece a $A$".
+
+$x \notin A$ que se lee "$x$ no pertenece a $A$".
+
+Un conjunto se puede definir por \textbf{extensión}, listando sus elementos:
+
+\[A = \{1, 2, 3, 4, 5 \} \]
+
+O por \textbf{comprensión}, describiendo una propiedad:
+
+\[A = \{x \mid x \in \mathbb{Z}, 1 \le x \le 5  \} \]
+
+\section{Conjuntos especiales}
+
+\subsection{Conjunto vacío} 
+
+El conjunto vacío cumple con:
+
+\begin{itemize}
+    \item Se representa mediante $\emptyset$ o $\{\}$. 
+    \item No contiene ningún elemento.
+    \item Es único (se demuestra en el apartado de "Propiedades y demostraciones").
+    \item Es subconjunto de cualquier otro conjunto.
+\end{itemize}  
+
+\subsection{Conjunto universal} 
+
+Se representa con la letra $U$. 
+
+Es el conjunto que contiene "todos" los elementos relevantes para un contexto particular. Su definición dependerá del problema que estemos resolviendo.
+
+\section{Subconjuntos}
+
+Decimos que $A$ es un subconjunto de $B$, si todo elemento de $A$ es también elemento de $B$. 
+
+Lo denotamos como: 
+
+\[A \subseteq B\]
+
+Definimos formalmente un subconjunto como: 
+
+\[A \subseteq B \iff \forall x \, (x \in A \implies x \in B)\]
+
+Decimos que $A$ es un \textbf{subconjunto propio} de $B$ si se cumple:
+
+\[A \subseteq B \land A \neq B \implies A \subsetneq B\]
+
+\subsection{La Paradoja de Russell}
+
+La teoría "ingenua" de conjuntos permite formar un conjunto a partir de cualquier propiedad. Esto puede llevarnos a \textbf{contradicciones}. 
+
+Consideremos la propiedad $P(x): x \notin x$ y formemos el conjunto: $R = \{ x \mid x \notin x \}$.
+
+Nos podemos formular la siguiente pregunta: ¿Es $R \in R$?
+
+Acá tenemos dos escenarios posibles:
+
+\begin{itemize}
+    \item Si $R \in R$, entonces por su propia definición se debe cumplir que $R \notin R$ (lo cual es una contradicción).
+    \item Si $R \notin R$, entonces cumple la propiedad para estar en R, por lo tanto, $R \in R$ (nuevamente llegamos a una contradicción). 
+\end{itemize}
+
+Esta paradoja demostró que la teoría de conjuntos debía \textbf{axiomatizarse} para evitar tales construcciones. 
+
+\section{Operaciones entre conjuntos}
+
+\begin{itemize}
+    \item \textbf{Unión}: Es el conjunto de todos los elementos que están en $A$, o en $B$, o en ambos.
+    
+    \[ A \cup B = \{x \mid x \in A \lor x \in B \} \]    
+    
+    \item \textbf{Intersección:} Es el conjunto de todos los elementos que están en $A$ y $B$.
+    
+    \[ A \cap B = \{x \mid x \in A \land x \in B  \}  \]
+
+    \item \textbf{Diferencia:} Es el conjunto de elementos que están a $A$ pero no en $B$.
+    
+    \[ A - B = \{x \mid x \in A \land x \notin B  \} \]
+    
+    \item \textbf{Complemento:} Corresponde al conjunto de todos los elementos de $U$ que no están en un conjunto $A$.
+    
+    \[ A^C = \{x \mid x \in U \land x \notin A  \}  \]
+\end{itemize}
+
+\section{Propiedades y demostraciones}
+
+No basta con conocer las operaciones, debemos demostrar sus propiedades.
+
+La estrategia para demostrar igualdad de conjuntos es la \textbf{doble contención}:
+
+\[ A = B \iff  A \subseteq B \land B \subseteq A \]
+
+\textit{Ejemplo:}
+
+Demostrar que el conjunto $\emptyset$ es único.
+
+Supongamos que existe otro conjunto vacío (distinto a $\emptyset$), al cual denotaremos como $\emptyset_0$.
+
+Por definición de conjunto vacío sabemos que:
+
+$\emptyset \subseteq \emptyset_0 \land \emptyset_0 \subseteq \emptyset \implies \emptyset = \emptyset_0$ (por doble contención).
+
+Esto \textbf{contradice} nuestra suposición inicial sobre que $\emptyset \neq \emptyset_0$.
+
+Por lo tanto, el conjunto $\emptyset$ es único.
+
+$\qed$
+
+\textit{Ejemplo:}
+
+Demostrar que $A \cup (B \cup C) = (A \cup B) \cup C$
+
+\textbf{Primera parte:} 
+
+$A \cup (B \cup C) \subseteq (A \cup B) \cup C$
+
+\underline{Hipótesis:} Sea $x \in  A \cup (B \cup C)$
+
+Se tiene que:
+
+$x \in A  \lor x \in (B \cup C) \implies x \in A \lor (x \in B \lor x \in C)$ 
+
+Por asociatividad tenemos:
+
+$(x \in A \lor x \in B) \lor x \in C \implies x \in (A \cup B) \cup C$
+
+\textbf{Segunda parte:} $(A \cup B) \cup C \subseteq A \cup (B \cup C)$
+
+\underline{Hipótesis:} Sea $x \in (A \cup B) \cup C$
+
+Tenemos que:
+
+$x \in (A \cup B) \lor x \in C \implies (x \in A \lor x \in B) \lor x \in C$
+
+Por propiedad asociativa se tiene que:
+
+$x \in A \lor (x \in B \lor x \in C) \implies x \in A \cup (B \cup C)$
+
+Q.E.D
+
+\textit{Ejemplo:}
+
+Demostrar que $A \cup \emptyset = A$
+
+\textbf{Primera parte:} $A \cup \emptyset \subseteq A$
+
+\underline{Hipótesis:} Sea $x \in A \cup \emptyset$
+
+Se tiene que:
+
+$x \in A \lor x \in \emptyset$
+
+Por definición de \textbf{conjunto vacío} sabemos que $x \in \emptyset$ es una proposición falsa
+
+Para que la disyunción: $x \in A \lor x \in \emptyset$ sea cierta se debe cumplir que $x \in A$
+
+\textbf{Segunda parte:} $A \subseteq A \cup \emptyset$
+
+\underline{Hipótesis:} Sea $x \in A$
+
+En la disyunción $x \in A \lor x \in \emptyset$, la proposición $x \in A$ es cierta por hipótesis
+
+Por lo tanto, la disyunción completa es cierta: $x \in A \cup \emptyset$
+
+Q.E.D.
+
+\section{Producto cartesiano}
+
+Es el conjunto de todos los pares ordenados $(a, b)$ donde $a \in A$ y $b \in B$
+
+Formalmente: $A \times B = \{(a,b) \mid a \in A \land b \in B \}$
+
+\textit{Ejemplo:}
+
+Si $A = \{1, 2\}$ y $B = \{x, y\}$, tenemos que:
+
+$A \times B = \{ (1, x), (1, y), (2, x), (2, y) \}$
+
+\textbf{Propiedad (Cardinalidad):}
+
+Si $A$ y $B$ son finitos se tiene que:
+
+\[ \left|A \times B\right| = \left|A\right| \times \left|B\right| \]
+
+\section{Conjunto por partes}
+
+También conocido como \textbf{conjunto potencia}. Es el conjunto de todos los subconjuntos del conjunto $A$:
+ 
+\[ P(A) = \{X \mid X \subseteq A \} \]
+
+\textit{Ejemplo:}
+
+Si $A = \{1, 2\}$ entonces $P(A) = \{\emptyset, \{1\}, \{2\}, \{1, 2\} \}$
+
+\textbf{Teorema:} Si $A$ es un conjunto finito con $n$ elementos, entonces $P(A)$ tiene $2^n$ elementos (la demostración se realiza en la parte de inducción matemática)
+
+\section{Aplicaciones o funciones}
+
+Una aplicación $f$ de un conjunto $A$ (llamado \textbf{dominio}) a un conjunto $B$ (llamado \textbf{codominio}), denotado por: $A \to B$, es una relación que asigna a cada elemento $a \in A$ un \textbf{único} elemento $b \in B$
+
+Formalmente:
+
+Una función $f: A \to B$ es un subconjunto del producto cartesiano $A \times B$ que cumple con:
+
+\begin{itemize}
+    \item \textbf{Existencia:} $\forall a \in A, \exists b \in B \mid (a,b) \in f$
+    \item \textbf{Unicidad:} Si $(a, b_1) \in f$ y $(a, b_2) \in f \implies b_1 = b_2$
+    \item \textbf{Imagen (Rango):} Es el conjunto $\text{Im}(f) = \{f(a) \mid a \in A\}$, donde se cumple que $\text{Im}(f) \subseteq B$
+\end{itemize}
+
+\textbf{Tipos de funciones}
+
+\textbf{a) Inyectiva (uno a uno):} Elementos distintos del dominio tienen imágenes distintas.
+    
+$f: A \to B$ es inyectiva si $\forall a_1, a_2 \in A (f(a_1) = f(a_2) \implies a_1 = a_2)$
+
+\textit{Ejemplo:}
+
+Demostrar que $f: \mathbb{R} \to \mathbb{R}$ definida por $f(x) = 2x + 1$ es inyectiva
+
+Supongamos que $f(a) = f(b)$, para cualesquiera $a, b \in \mathbb{R}$
+
+Tenemos que: $2a + 1 = 2b + 1$
+
+Por \textbf{propiedad de cancelación}: $2a = 2b \implies 2a - 2b = 0 \implies 2(a - b) = 0$
+
+Lo anterior implica que: $a - b = 0 \implies a = b$
+
+Por lo tanto, la función $f(x)$ es inyectiva.
+
+\textit{Ejemplo:}
+
+Demostrar que $f: \mathbb{R} \to \mathbb{R}$, definida por $f(x) = x^2$ es inyectiva
+
+Supongamos que $f(a) = f(b)$, para cualesquiera $a, b \in \mathbb{R}$
+
+Entonces: $a^2 = b^2 \implies a^2 - b^2 = 0 \implies (a - b)(a + b) = 0$
+
+Supongamos que $a$ y $b$ son distintos, por lo que $(a + b)$ debe ser cero para que se cumpla: $(a - b)(a + b) = 0$
+
+Consideremos $a = 1$, entonces: $(1 + b) = 0 \implies b = -1$
+
+Lo anterior implica que:
+
+$f(1) = (1)^2 = 1$ y $f(-1) = (-1)^2 = 1$
+
+Podemos asegurar que:
+
+$f(a) = f(b)$ no implica necesariamente que $a = b$
+
+Por lo tanto, la función $f(x)$ no es inyectiva.
+
+\textbf{b) Sobreyectiva:} El rango cubre completamente el codominio.
+    
+$f: A \to B$ es sobreyectiva si $\forall b \in B, \exists a \in A \mid f(a) = b$
+
+En otras palabras: $\text{Im}(f) = B$
+
+\textit{Ejemplo:}
+
+Demostrar si la función $f: \mathbb{R} \to \mathbb{R}, f(x) = 2x + 1$ es sobreyectiva 
+
+Sea $y \in \mathbb{R}$ arbitrario, queremos demostrar que existe $x \in \mathbb{R}$ tal que $f(x) = y$
+
+Tenemos que $y = 2x + 1 \implies y - 1 = 2x \implies x = \frac{y - 1}{2}$
+
+Evaluamos $x$ en nuestra función $f$:
+
+$f(x) = 2x + 1 = 2(\frac{y - 1}{2}) + 1 = y - 1 + 1 = y$ 
+
+Como $y \in \mathbb{R}$, el valor de $x = \frac{y - 1}{2}$ está bien definido para $\mathbb{R}$, implica que para cualquier $y \in \mathbb{R}$ existe al menos un $x \in \mathbb{R}$ Q.E.D.
+
+Por lo tanto, la función $f$ es sobreyectiva.
+
+\textit{Ejemplo:}
+
+Demostrar que la función $f: \mathbb{R} \to \mathbb{R}^+ \cup \{0\}$, definida por $f(x) = x^2$ es sobreyectiva
+
+Sea $y \in \mathbb{R}^+ \cup \{0\}$ arbitrario, queremos demostrar que existe $x \in \mathbb{R}$ tal que $f(x)= y$
+
+Expresamos $y = x^2 \implies \sqrt{y} = \sqrt{x^2} \implies \sqrt{y} = \left|x\right| \implies x = \pm \sqrt{y}$
+
+Evaluamos $x$ en la función $f$:
+
+$f(x) = x^2 = (\pm \sqrt{y})^2 = y$
+
+Como $y \ge 0$, el valor $x = \pm \sqrt{y}$ está bien definido en $\mathbb{R}$. Esto implica que para cualquier $y \in \mathbb{R}^+ \cup \{0\}$ existe al menos un $x \in \mathbb{R}$ Q.E.D.
+
+Por lo tanto, la función $f$ es sobreyectiva.
+
+\textbf{c) Biyectiva:} Una función es biyectiva si es inyectiva y sobreyectiva al mismo tiempo.
+
+\textbf{Funciones inversas y composición:}
+
+\textbf{a) Función inversa:} Una función $f: A \to B$ tiene una función inversa $f^{-1}: B \to A$, si y solo si es $f$ es una función biyectiva.
+
+La función inversa "deshace" lo que $f$ hizo (y viceversa), es decir:
+
+\[f(f^{-1}(x)) = x \, \text{y } f^{-1}(f(x)) = x\]
+
+\textit{Ejemplo:}
+
+Dada la función $f(x) = 3x - 1$
+
+Sabemos que la función $f(x)$ es biyectiva, entonces tiene función inversa:
+
+$y = 3x - 1 \implies y + 1 = 3x \implies x = \frac{y + 1}{3} \implies f^{-1}(x) = \frac{x + 1}{3}$
+
+Evaluamos $f$ en $f^{-1}$:
+
+$f^{-1}(f(x)) = \frac{(3x - 1) + 1}{3} = \frac{3x}{3} = x$
+
+También podemos evaluar $f^{-1}$ en $f$:
+
+$f(f^{-1}) = 3(\frac{x + 1}{3}) - 1 = x + 1 - 1 = x$
+
+\textit{Ejemplo:}
+
+Demostrar si la función $f: \left[0, \infty\right) \to \left[-1, \infty\right)$, definida por $f(x) = x^2 - 1$ tiene inversa $f^{-1}$
+
+Primero, debemos demostrar si la función $f$ es una función \text{biyectiva}:
+
+a) Demostrar que $f$ es inyectiva:
+
+Supongamos que $f(a) = f(b), \forall a,b \in \left[0, \infty \right)$, entonces:
+
+$a^2 - 1 = b^2 - 1$
+
+Por propiedad de cancelación tenemos que: $a^2 = b^2$
+
+Luego, $a^2 - b^2 = 0 \implies (a - b)(a + b) = 0$
+
+Como $a, b \in \left[0, \infty \right)$, implica que $a$ y $b$ son positivos o iguales que cero.
+
+Entonces, no se puede dar que $a \neq b$, ya que nuestro producto nunca podría ser igual que cero.
+
+Por lo tanto, $a = b$ Q.E.D.
+
+b) Demostrar que $f$ es sobreyectiva:
+
+Dado $y \in \left[-1, \infty \right)$ arbitrario, queremos demostrar que existe un $x \in \left[0, \infty \right)$, tal que $f(x) = y$
+
+Podemos expresar $y = x^2 - 1 \implies y + 1 = x^2 \implies \sqrt{y + 1} = \sqrt{x^2} \implies \left|x\right| = \sqrt{y + 1} \implies x = \pm \sqrt{y + 1}$
+
+Como $x \in \left[0, \infty \right)$, debemos desestimar la parte negativa de nuestra expresión $x = \pm \sqrt{y + 1}$, entonces: $x = \sqrt{y + 1}$
+
+Evaluamos $x$ en la función $f$:
+
+$f(x) = x^2 - 1 = (\sqrt{y + 1})^2 - 1 = y + 1 - 1 = y$
+
+Como $y \ge -1$, entonces $x = \sqrt{y + 1}$ está bien definido en $\left[0, \infty \right)$, implica que para cualquier $y \in \left[-1, \infty \right)$ existe un único (ya demostramos que $f$ es inyectiva) $x \in \left[0, \infty \right)$ Q.E.D.
+
+Por lo tanto, la función $f$ es sobreyectiva.
+
+Como $f$ es inyectiva y sobreyectiva, entonces $f$ es una función \textbf{biyectiva}.
+
+Finalmente, podemos decir que $f$ tiene una función inversa:
+
+$y = x^2 - 1 \implies y + 1 = x^2 \implies \sqrt{y + 1} = \sqrt{x^2} \implies \sqrt{y + 1} = \left|x\right| \implies x = \pm \sqrt{y + 1}$
+
+Nuevamente, como $x \in \left[0, \infty \right)$, debemos desestimar la parte negativa en nuestra expresión $x = \pm \sqrt{y + 1}$, por lo tanto, nuestra función inversa está dada por:
+
+$f^{-1}: \left[-1, \infty \right) \to \left[0, \infty \right)$, definida por $f^{-1}(x) = \sqrt{x + 1}$
+
+\textbf{b) Composición:} Sean dos funciones:
+
+$g: A \to B$ (función interna)
+
+$f: C \to D$ (función externa)
+
+La \textbf{función compuesta} $(f \circ g)$ es una nueva función que va desde el dominio de la \textbf{función interna} hasta el codominio de \textbf{función externa}, si y solo si, los valores que salen de la función interna pueden ser procesados por la función externa.
+
+\textbf{Condición de existencia:} Para que $(f \circ g)$ esté bien definida se debe cumplir que:
+
+\[ \text{Ran}(g) \subseteq \text{Dom}(f) \]
+
+Si esto se cumple, la regla de correspondencia es:
+
+\[ (f \circ g)(x) = f(g(x)) \]
+
+\textit{Ejemplo:}
+
+Calcular $(f \circ g)$ para: 
+
+$g: \mathbb{R} \to \mathbb{R}$, definida por $g(x) = x - 8$ y 
+
+$f: \left[0, \infty \right) \to \mathbb{R}$, definida por $f(x) = \sqrt{x}$
+
+Si $\text{Ran}(g) \subseteq \text{Dom}(f)$, entonces:
+
+$f \circ g: \mathbb{R} \to \mathbb{R}$ (*) 
+
+Calculamos $\text{Ran}(g):$
+
+Por definición sabemos que: 
+
+$g(x) = y \implies x - 8 = y \implies x = y + 8, \forall x \in \mathbb{R}$
+
+Evaluamos $x$ en nuestra función $g$:
+
+$g(x) = x - 8 = (y + 8) - 8 = y$
+
+Definimos $f(g(x)) = \sqrt{x - 8}$
+
+El dominio de $f(g(x))$ está condicionado por: $x - 8 \ge 0 \implies x \ge 8 $
+
+El codominio es $\mathbb{R}$
+
+Por lo tanto: $f \circ g: \left[8, \infty \right) \to \mathbb{R}, (f \circ g)(x) = \sqrt{x - 8}$
+
+\textit{Ejemplo:}
+
+Calcular $(f \circ g)$ para: $g(x) = \frac{1}{x}$ y $f(x) = \frac{1}{x-5}$
+
+Definimos: $g: \mathbb{R} - \{0\} \to \mathbb{R}$ y $f: \mathbb{R} - \{5\} \to \mathbb{R}$
+
+Si se cumple que $\text{Ran}(g) \subseteq \text{Dom}(f)$, entonces:
+
+$f \circ g: \mathbb{R} - \{0\} \to \mathbb{R} - \{5\}$ (*)
+
+Hallamos $\text{Ran}(g)$: 
+
+Despejamos $x$ de nuestra función:
+
+$y = \frac{1}{x} \implies x = \frac{1}{y} \implies \text{Ran}(g) = \mathbb{R} - \{0\}$
+
+Como $\text{Ran}(g) = \mathbb{R} - \{0\} \not\subseteq \text{Dom}(f) = \mathbb{R} - \{5\}$, no se cumple (*)
+
+Definimos $f(g(x)) = \frac{1}{\frac{1}{x} - 5}$
+
+Analizamos nuestro \textbf{denominador} y encontramos 2 valores de "conflicto":
+
+\begin{itemize}
+    \item $x = 0 \implies f(g(0)) = \frac{1}{\frac{1}{0} - 5}$
+    \item $x = \frac{1}{5} \implies f(g(\frac{1}{5})) = \frac{1}{\frac{1}{\frac{1}{5}} - 5} = \frac{1}{5 - 5} = \frac{1}{0}$
+\end{itemize}
+
+El dominio de $f(g(x))$ está condicionado por $\mathbb{R} - \{0, \frac{1}{5}\}$
+
+El codominio de $f(g(x))$ es $\mathbb{R}$
+
+Por lo tanto: $f \circ g: \mathbb{R} - \{0, \frac{1}{5}\} \to \mathbb{R}, (f \circ g)(x) = \frac{1}{\frac{1}{x} + 5}$
+
+\textit{Ejemplo:}
+
+Calcular $(f \circ g)$ para $g(x) = x^2 + 1$ y $f(x) = \text{ln(}x)$
+
+Tenemos que: $g: \mathbb{R} \to \mathbb{R}$ y $f: \left(0, \infty \right) \to \mathbb{R}$
+
+Si $\text{Ran}(g) \subseteq \text{Dom}(f)$, se cumple que:
+
+$f \circ g: \mathbb{R} \to \mathbb{R}$ (*)
+
+Calculamos $\text{Ran}(g):$
+
+Despejamos $x$ en nuestra función: $y = x^2 + 1 \implies y - 1 = x^2 \implies \sqrt{x^2} = \sqrt{y - 1} \implies x = \pm \sqrt{y - 1}$
+
+El rango está condicionado por $y - 1 \ge 0 \implies y \ge 1 \implies \text{Ran}(g) = \left[1, \infty \right)$
+
+Dado que $\text{Ran}(g) = \left[1, \infty \right) \subseteq \text{Dom}(f) = \left(0, \infty \right)$, se cumple (*)
+
+Entonces: $f \circ g: \mathbb{R} \to \mathbb{R}$, definido por $(f \circ g)(x) = \text{ln}(x^2 + 1)$
+
+\section{Principio de inducción}
+
+Imagina que quieres demostrar que una propiedad es cierta para todos los números naturales: 1, 2, 3, 4, 5, ... hasta el infinito. No puedes verificarlos uno por uno. La \textbf{inducción} es la herramienta matemática que te permite hacer exactamente eso.
+
+Para demostrar que una proposición $P(n)$ es cierta para todo $n \ge n_0$, seguimos los pasos:
+
+\begin{itemize}
+    \item \textbf{Base de inducción:} Demostramos que $P(n_0)$ es cierta.
+    \item \textbf{Hipótesis de inducción:} Asumimos que $P(k)$ es cierta para un k arbitrario pero fijo, donde $k \ge n_0$
+    \item \textbf{Paso inductivo:} Usando la hipótesis de que $P(k)$ es cierta, demostramos que $P(k + 1)$ también es cierta.
+    \item \textbf{Conclusión:} Por el \textbf{principio de inducción}, $P(n)$ es cierta para todo $n \ge n_0$
+\end{itemize}
+
+\textit{Ejemplo}:
+
+Demostrar por inducción que la suma de los primeros $n$ números pares es $n(n + 1)$
+
+\textbf{Proposicioń:} $2 + 4 + 6 + ... + 2n = n(n + 1), \forall n \in \mathbb{N}$
+
+\textbf{1. Base de inducción:} 
+
+Probamos que la proposición es cierta para nuestro primer elemento $(n_0 = 1)$:
+
+$2(1) = 1(1 + 1) \implies 2 = 2$ Q.E.D.
+
+\textbf{2. Hipótesis de inducción:}
+
+Asumimos que la proposición es cierta para el entero $k \ge n_0$:
+
+$2 + 4 + 6 + ... + 2k = k(k + 1)$
+
+\textbf{3. Paso inductivo:}
+
+PD: Si la proposición es cierta para $P(k)$, entonces, es cierta para $P(k + 1)$:
+
+$2 + 4 + 6 + ... + 2k + 2(k + 1) = (k + 1)\left[(k + 1) + 1 \right]$
+
+Es decir... 
+
+$2 + 4 + 6 + ... + 2k + 2(k + 1) = (k + 1)(k + 2)$
+
+Sabemos que: $2 + 4 + 6 + ... + 2k = k(k + 1)$, entonces:
+
+$k(k + 1) + 2(k + 1) = (k + 1)(k + 2)$
+
+Si \textbf{factorizamos} $k(k + 1) + 2(k + 1)$ obtenemos $(k + 1)(k + 2)$ Q.E.D.
+
+\textbf{4. Conclusión:} 
+
+Hemos demostrado que:
+
+\begin{itemize}
+    \item La base de inducción $P(n_0)$ es cierta.
+    \item Si $P(k)$ es cierto, entonces $P(k + 1)$ también es cierto.
+\end{itemize}
+
+Por principio de inducción, hemos demostrado que nuestra proposición es cierta.
+
+\textit{Ejemplo:}
+
+Demostrar que si $A$ es un conjunto finito con $n$ elementos, entonces $P(A)$ tiene $2^n$ elementos.
+
+\textbf{Proposición:} Si $\left| A\right| = n \implies \left|P(A)\right| = 2^n$
+
+\textbf{1. Base de inducción:}
+
+Probamos que nuestra proposición es cierta para $n_0 = 0$:
+
+$A = \emptyset \implies P(A) = \{ \emptyset \}$
+
+Implica que:
+
+$\left|A\right| = 0 \implies \left|P(A)\right| = 2^0 = 1$ Q.E.D.
+
+\textbf{2. Hipótesis de inducción:}
+
+Asumimos que nuestra proposición es cierta para $k \ge n_0$, es decir:
+
+$\left|A\right| = k \implies \left|P(A)\right| = 2^k$
+
+Donde el conjunto $A = \{a_1, a_2, ..., a_k\}$
+
+\textbf{3. Paso de inducción:}
+
+PD: Si nuestra hipótesis de inducción es cierta, entonces, un conjunto $A'$ con $k + 1$ elementos implica que $\left|P(A')\right| = 2^{k + 1}$
+
+El conjunto $A'$ está dado por:
+
+$A' = \{a_1, a_2, ..., a_k, a_{k+1}\}$
+
+Podemos expresar al conjunto $A'$ como la unión del conjunto $A$ y el elemento $a_{k+1}$:
+
+$A' = \{a_1, a_2, ..., a_k\} \cup \{a_{k + 1}\} = A \cup \{a_{k+1}\}$
+
+Los subconjuntos de $A'$, que formarán al \textbf{conjunto potencia} $P(A')$, se dividen en dos tipos:
+
+\begin{itemize}
+    \item Los subconjuntos que no contienen al elemento $a_{k + 1}$, los cuales corresponden a los elementos de $P(A)$. Por \textbf{hipótesis de inducción} sabemos que hay $2^k$ elementos para $P(A)$.
+
+    \item Los subconjuntos que contienen al elemento $a_{k + 1}$, los cuales se forman al añadir a cada elemento de $P(A)$ el elemento $a_{k + 1}$. Lo anterior implica que hay $2^k$ elementos.
+\end{itemize}
+
+El total de subconjuntos corresponde a la cantidad de elementos de $P(A')$:
+
+$\left|P(A')\right| = 2^k + 2^k$
+
+Supongamos que $2^k = a \implies a + a = 2a \implies 2(2^k) = 2^{k + 1}$
+
+Entonces: $\left|P(A')\right| = 2^{k + 1}$ Q.E.D.
+
+\textbf{4. Conclusión:}
+
+Hemos demostrado:
+
+\begin{itemize}
+    \item La base de inducción $P(n_0)$ es cierta.
+    \item Si $P(k)$ es cierta, entonces, $P(k + 1)$ también es cierta.
+\end{itemize}
+
+Por principio de inducción, hemos demostrado que si $\left|A\right| = n \implies \left|P(A)\right| = 2^n$
+
+\textit{Ejemplo:}
+
+Demostremos por inducción que para todo $n \in \mathbb{N}$ (comenzando con $n_0 = 1$):
+
+$3^{2n} - 1$ es divisible por $8$.
+
+\textbf{Proposición:} $\forall n \in \mathbb{N}$ se cumple que $3^{2n} - 1 = 8r, \exists r \in \mathbb{N}$
+
+\textbf{1. Base de inducción:}
+
+Vamos a demostrar que nuestra proposición se cumple para el primer término $n_0 = 1$:
+
+$3^{2(1)} - 1 = 9 - 1 = 8$ Q.E.D.
+
+\textbf{2. Hipótesis de inducción:}
+
+Supongamos que nuestra proposición se cumple para cualquier $k \ge n_0$:
+
+$3^{2k} - 1 = 8s, \exists s \in \mathbb{N}$
+
+\textbf{3. Paso inductivo:}
+
+PD: Si la hipótesis de inducción es cierta, entonces, $3^{2(k + 1)} - 1 = 8m, \forall m \in \mathbb{N}$
+
+Dada nuestra hipótesis de inducción: $3^{2k} - 1 = 8s$:
+
+Multiplicamos $3^2$ en ambos lados de la ecuación $3^2(3^{2k} - 1) = 3^2(8s)$
+
+Desarrollamos el producto: $3^{2k + 2} - 9 = 9(8s) \implies 3^{2(k + 1)} - 9 = 9(8s)$
+
+Sumamos $8$ en ambos lados de la expresión $3^{2(k + 1)} - 1 = 9(8s) + 8$
+
+Factorizamos la parte derecha de nuestra ecuación: $3^{2(k + 1)} - 1 = 8(9s + 1)$
+
+Suponemos que $m = 9s + 1 \implies 3^{2(k + 1)} - 1 = 8m$ Q.E.D.
+
+\textbf{4. Conclusión:}
+
+Hemos demostrado que:
+
+\begin{itemize}
+    \item La base inductiva es cierta.
+    \item Si nuestra hipótesis de inducción es cierta, entonces, la proposición también es verdadera para $k + 1$.
+\end{itemize}
+
+Por lo tanto, hemos demostrado por inducción que $3^{2k} - 1$ es divisible dentro de $8$, para todo $n \in \mathbb{N}$.
+
+\section{Conjuntos finitos e infinitos}
+
+\textbf{Conjuntos finitos:}
+
+Un conjunto $A$ es finito si:
+
+\begin{itemize}
+    \item $A$ es el conjunto vacío, o
+    \item Puede ponerse en correspondencia \textbf{biyectiva} con el conjunto $\{1, 2, 3, ..., n\}$, para algún número $n$.
+\end{itemize}
+
+\textit{Ejemplo:}
+
+Como el conjunto $A = \{\text{manzana}, \, \text{pera}, \, \text{uva}\}$ puede hacer la biyección:
+
+$1 \to \, \text{manzana}$
+
+$2 \to \, \text{pera}$
+
+$3 \to \, \text{uva}$
+
+El conjunto $A$ es \textbf{finito} con cardinalidad = $3$.
+
+\textbf{Propiedad:} Si $A$ es un conjunto finito, su cardinalidad $\left|A\right|$ es un número $n$ único.
+
+\textbf{Conjuntos infinitos:}
+
+Un conjunto $A$ es infinito si no es finito. Es decir, un conjunto $A$ es infinito si no existe ningún número $n$ tal que $A$ esté en correspondencia biyectiva con el conjunto $\{1, 2, 3, ..., n\}$
+
+Para comparar "tamaños" de conjuntos infinitos, no podemos contar. Por lo tanto, usamos \textbf{biyecciones}:
+
+\begin{itemize}
+    \item Decimos que dos conjuntos $A$ y $B$ tienen la misma cardinalidad, es decir $\left|A\right| = \left|B\right|$, si existe una biyección entre dichos conjuntos.
+    \item Decimos que $\left|A\right| < \left|B\right|$ si $A$ es biyectable con un subconjunto propio de $B$, pero $B$ no es biyectable con ningún subconjunto propio de $A$.
+\end{itemize}
+
+\textbf{Conjuntos numerables}:
+
+Un conjunto es \textbf{numerable} si existe una biyección con el conjunto de los números naturales $\mathbb{N}$. Esto significa que podemos "listar" sus elementos, aunque la lista nunca termine.
+
+\textbf{Cardinalidad Aleph cero}: 
+
+Es el nombre que le damos al tamaño de los conjuntos numerables.
+
+Decimos que un conjunto $A$ tiene cardinalidad $\aleph_0$ si y solo si: existe una biyección entre dicho conjunto y el conjunto de los números naturales $\mathbb{N}$ (es decir, es un conjunto numerable).
+
+El subíndice cero indica que es el infinito más pequeño que existe. No hay ningún conjunto infinito que tenga menos elementos que los naturales.
+
+\textit{Ejemplo:}
+
+Demostrar si el conjunto de naturales $\mathbb{N}$ tiene la misma cardinalidad que el conjunto de números pares positivos $P$.
+
+Definimos la función: $f: \mathbb{N} \to P, f(n) = 2n$
+
+Nuestra función recibe números naturales y "escupe" números pares positivos.
+
+a) Demostramos si la función es \textbf{inyectiva:}
+
+Supongamos que $f(a) = f(b) \implies 2a = 2b \implies 2a - 2b = 0 \implies 2(a - b) = 0$
+
+Implica que $a - b = 0 \implies a = b$
+
+Por lo tanto, nuestra función $f$ es inyectiva.
+
+b) Demostramos si la función es \textbf{sobreyectiva:}
+
+Definimos cualquier número par positivo como: $p = 2n, \forall n \in \mathbb{N} \implies n = \frac{p}{2}$
+
+Evaluamos $n$ en nuestra función $f$: $f(n) = 2n = 2(\frac{p}{2}) = p$
+
+Esto nos indica que para cualquier número par $p \in P$, existe una pre-imagen $n \in \mathbb{N}$ tal que $f(n) = p$
+
+Dado (a) y (b), concluimos que $f$ es \textbf{biyectiva}.
+
+Podemos generar varias conclusiones:
+
+\begin{itemize}
+    \item $\left|\mathbb{N}\right| = \left|P\right|$.
+    \item Como existe una biyección entre el conjunto $P$ con el conjunto de números naturales, podemos decir que $P$ es un conjunto numerable.
+    \item Por el punto anterior, decimos que el conjunto $P$ tiene cardinalidad $\aleph_0$.
+\end{itemize}
+
+\textit{Ejemplo:}
+
+Demostrar si el conjunto de los naturales $\mathbb{N}$ tiene la misma cardinalidad que el conjunto de los enteros $\mathbb{Z}$.
+
+Definimos la función: $f: \mathbb{N} \to \mathbb{Z}$, definida por:
+
+$
+f(n) = 
+\begin{cases}
+    \frac{n}{2} \, \text{si n es par} \\
+    -\frac{n + 1}{2} \, \text{si n es impar} 
+\end{cases}
+$
+
+a) Demostramos si $f$ es inyectiva:
+
+\underline{Caso No. 1:} Consideramos que $a, b$ son números pares.
+
+Además, suponemos que $f(a) = f(b)$, entonces:
+
+$\frac{a}{2} = \frac{b}{2} \implies \frac{a}{2} - \frac{b}{2} = 0 \implies \frac{a - b}{2} = 0 \implies (\frac{1}{2})(a - b) = 0$
+
+Lo anterior, implica inevitablemente que $a - b = 0 \implies a = b$ Q.E.D.
+
+Cuando $n$ es par tenemos que:
+
+$f(0) = \frac{0}{2} = 0$
+
+$f(2) = \frac{2}{2} = 1$
+
+$f(4) = \frac{4}{2} = 2$
+
+$f(6) = \frac{6}{2} = 3$
+
+...
+
+Como podemos observar, cuando $n$ es par, las imágenes serán los enteros positivos, incluyendo al cero.
+
+\underline{Caso No. 2:} Tomamos en cuenta que $a, b$ son números impares.
+
+Nuevamente suponemos que $f(a) = f(b)$, entonces:
+
+$-\frac{a + 1}{2} = -\frac{b + 1}{2} \implies \frac{a + 1}{2} = \frac{b + 1}{2} \implies \frac{a + 1}{2} - \frac{b + 1}{2} = 0 \implies \frac{a + 1 -(b + 1)}{2} = 0 \implies \frac{a - b}{2} = 0 \implies (\frac{1}{2})(a - b) = 0$
+
+Implica que $a - b = 0 \implies a = b$ Q.E.D.
+
+Cuando $n$ es impar se tiene:
+
+$f(1) = -\frac{1 + 1}{2} = -1$
+
+$f(3) = -\frac{3 + 1}{2} = -2$
+
+$f(5) = -\frac{5 + 1}{2} = -3$
+
+$f(7) = -\frac{7 + 1}{2} = -4$
+
+...
+
+Observamos que cuando $n$ es un número impar, las imágenes corresponden a los enteros negativos.
+
+\underline{Caso No. 3:} \textbf{Caso cruzado}, donde suponemos que $a$ es par y $b$ impar (o viceversa).
+
+Para el caso cruzado, no es posible que cuando $f(a) = f(b)$ implique que $a = b$. Esto se debe a que si $a$ es par, entonces $f(a) \ge 0$, mientras que si $b$ es impar, entonces $f(b) < 0$.
+
+Esto asegura que ningún $n$ par generará una imagen correspondiente a una $n$ impar, y viceversa.
+
+Por las demostraciones en los casos anteriores, podemos concluir que la función $f$ es inyectiva.
+
+b) Demostramos si $f$ es sobreyectiva:
+
+\underline{Caso No. 1:} Suponemos que $z$ es un entero positivo (incluyendo al cero). 
+
+Sabemos que la regla de la función que genera enteros positivos es: $f(n) = \frac{n}{2}$
+
+Despejamos $n$ en términos de $z$:
+
+$z = \frac{n}{2} \implies n = 2z$
+
+Como $n$ es de la forma $2k$ sabemos que es un número par.
+
+Aplicamos la regla de la función para números pares:
+
+$f(n) = \frac{n}{2} = \frac{2z}{2} = z$ Q.E.D.
+
+\underline{Caso No. 2:} Ahora suponemos que $z$ es un número entero negativo.
+
+Sabemos que la regla para números negativos es: $f(n) - \frac{n + 1}{2}$
+
+Nuevamente despejamos $n$ en términos de $z$:
+
+$z = -\frac{n + 1}{2} \implies -z = \frac{n + 1}{2} \implies -2z = n + 1 \implies n = -2z - 1 = -(2z + 1)$
+
+Como $n$ es de la forma $2k + 1$, sabemos que es un número impar.
+
+Aplicamos la regla de la función para impares:
+
+$f(n) = -\frac{n + 1}{2} = -\frac{(-2z - 1) + 1}{2} = -\frac{-2z}{2} = -(-z) = z$ Q.E.D.
+
+Como la función $f$ es sobreyectiva en ambos casos, podemos concluir que $f$ es siempre sobreyectiva.
+
+Por lo tanto, $f$ es biyectiva.
+
+De lo anterior, podemos concluir que:
+
+\begin{itemize}
+    \item $\left|\mathbb{N}\right| = \left|\mathbb{Z}\right|$.
+    \item El conjunto de números enteros $\mathbb{Z}$ es un conjunto numerable.
+    \item Por el punto anterior, podemos decir que la cardinalidad de $\mathbb{Z}$ es $\aleph_0$.
+\end{itemize}
+
+\textit{Ejemplo:}
+
+Demostrar si la cardinalidad del conjunto $\mathbb{N}$ es igual a la cardinalidad de $\mathbb{Q}$.
+
+Vamos a realizar nuestra demostración mediante la \textbf{Diagonal de Cantor}:
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{c|cccccc}
+$n$ & 1 & 2 & 3 & 4 & 5 & $\dots$ \\ \hline
+1 & \color{red}$\frac{1}{1}$ & $\frac{1}{2}$ & $\frac{1}{3}$ & $\frac{1}{4}$ & $\frac{1}{5}$ & $\dots$ \\
+2 & $\frac{2}{1}$ & \color{red}$\frac{2}{2}$ & $\frac{2}{3}$ & $\frac{2}{4}$ & $\frac{2}{5}$ & $\dots$ \\
+3 & $\frac{3}{1}$ & $\frac{3}{2}$ & \color{red}$\frac{3}{3}$ & $\frac{3}{4}$ & $\frac{3}{5}$ & $\dots$ \\
+4 & $\frac{4}{1}$ & $\frac{4}{2}$ & $\frac{4}{3}$ & \color{red}$\frac{4}{4}$ & $\frac{4}{5}$ & $\dots$ \\
+5 & $\frac{5}{1}$ & $\frac{5}{2}$ & $\frac{5}{3}$ & $\frac{5}{4}$ & \color{red}$\frac{5}{5}$ & $\dots$ \\
+$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$
+\end{tabular}
+\caption{Diagonal de Cantor ($\mathbb{Q}^+$)}
+\end{table}
+
+Si recorremos la matriz en \textbf{diagonales zigzag}, podemos elegir números racionales cuya representación son fracciones, donde su numerador y denominador son \textbf{coprimos}, es decir, su \textbf{MCD} es $1$.
+ 
+$k = 1 \implies f^+(1) = \frac{1}{1} = 1$
+
+$k = 2 \implies f^+(2) = \frac{2}{1} = 2$
+
+$k = 3 \implies f^+(3) = \frac{1}{2}$
+
+$k = 4 \implies f^+(4) = \frac{3}{1} = 3$
+
+$k = 5 \implies f^+(5) = \frac{1}{3}$
+
+$k = 6 \implies f^+(6) = \frac{4}{1} = 4$
+
+$k = 7 \implies f^+(7) = \frac{3}{2}$
+
+$k = 8 \implies f^+(8) = \frac{2}{3}$
+
+$k = 9 \implies f^+(9) = \frac{1}{4}$
+
+$\dots$
+
+Lo anterior implica que podemos formar:
+
+\begin{itemize}
+    \item El conjunto $L^+ = \{1, 2, \frac{1}{2}, 3, \frac{1}{3}, 4, \frac{3}{2}, \frac{2}{3}, \frac{1}{4}, \dots\}$
+    \item La biyección $f^+ : \mathbb{N} \to \mathbb{Q^+}$, definida por $f^+(k)$, donde $k \ge 0$
+\end{itemize}
+
+Formamos la matriz que nos permita generar los racionales negativos:
+
+\begin{table}[H]
+\centering
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{c|cccccc}
+$n$ & 1 & 2 & 3 & 4 & 5 & $\dots$ \\ \hline
+-1 & \color{red}$-\frac{1}{1}$ & $-\frac{1}{2}$ & $-\frac{1}{3}$ & $-\frac{1}{4}$ & $-\frac{1}{5}$ & $\dots$ \\
+-2 & $-\frac{2}{1}$ & \color{red}$-\frac{2}{2}$ & $-\frac{2}{3}$ & $-\frac{2}{4}$ & $-\frac{2}{5}$ & $\dots$ \\
+-3 & $-\frac{3}{1}$ & $-\frac{3}{2}$ & \color{red}$-\frac{3}{3}$ & $-\frac{3}{4}$ & $-\frac{3}{5}$ & $\dots$ \\
+-4 & $-\frac{4}{1}$ & $-\frac{4}{2}$ & $-\frac{4}{3}$ & \color{red}$-\frac{4}{4}$ & $-\frac{4}{5}$ & $\dots$ \\
+-5 & $-\frac{5}{1}$ & $-\frac{5}{2}$ & $-\frac{5}{3}$ & $-\frac{5}{4}$ & \color{red}$-\frac{5}{5}$ & $\dots$ \\
+$\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$ & $\vdots$
+\end{tabular}
+\caption{Diagonal de Cantor ($Q^-$)}
+\end{table}
+
+Nuevamente recorremos nuestra matriz mediante movimientos diagonales zigzag, para seleccionar racionales negativos, en forma de fracciones con numeradores y denominadores coprimos:
+
+$k = 1 \implies f^-(1) = -\frac{1}{1} = -1$
+
+$k = 2 \implies f^-(2) = -\frac{2}{1} = -2$
+
+$k = 3 \implies f^-(3) = -\frac{1}{2}$
+
+$k = 4 \implies f^-(4) = -\frac{3}{1} = -3$
+
+$k = 5 \implies f^-(5) = -\frac{1}{3}$
+
+$k = 6 \implies f^-(6) = -\frac{4}{1} = -4$
+
+$k = 7 \implies f^-(7) = -\frac{3}{2}$
+
+$k = 8 \implies f^-(8) = -\frac{2}{3}$
+
+$k = 9 \implies f^-(9) = -\frac{1}{4}$
+
+$\dots$
+
+Implica que podemos formar:
+
+\begin{itemize}
+    \item El conjunto $L^- = \{-1, -2, -\frac{1}{2}, -3, -\frac{1}{3}, -4, -\frac{3}{2}, -\frac{2}{3}, -\frac{1}{4}, \dots\}$
+    \item La biyección $f^- : \mathbb{N} \to \mathbb{Q^-}$, definida por $f^-(k)$, con $k \ge 0$
+\end{itemize}
+
+Vamos a crear un nuevo conjunto $L = L^+ \cup L^- \cup \{0\}$
+
+Podemos dividir nuestros número naturales en pares e impares, definiendo:
+
+\begin{itemize}
+    \item Si $n$ es par, entonces $n = 2k \implies k = \frac{n}{2}$
+    \item Si $n$ es impar, entonces $n = 2k + 1 \implies k = \frac{n - 1}{2}$
+\end{itemize}
+
+Luego, creamos nuestra biyección:
+
+$f: \mathbb{N} \to \mathbb{Q}$, definida por:
+
+$
+f(n) = 
+\begin{cases}
+    0 \, \text{si } n = 1 \\
+    f^+(k) = f^+(\frac{n}{2}) \, \text{si } n \ge 2 \, \text{es par} \\
+    f^-(k) = f^-(\frac{n - 1}{2}) \, \text{si } n \ge 3 \, \text{es impar}
+\end{cases}
+$
+
+Tenemos que:
+
+$f(1) = 0$
+
+$f(2) = f^+(\frac{2}{2}) = f^+(1) = 1$
+
+$f(3) = f^-(\frac{3 - 1}{2}) = f^-(1) = -1$
+
+$f(4) = f^+(\frac{4}{2}) = f^+(2) = 2$
+
+$f(5) = f^-(\frac{5 - 1}{2}) = f^-(2) = -2$
+
+$f(6) = f^+(\frac{6}{2}) = f^+(3) = \frac{1}{2}$
+
+$f(7) = f^-(\frac{7 - 1}{2}) = f^-(3) = -\frac{1}{2}$
+
+$\dots$
+
+Hemos demostrador que:
+
+\begin{itemize}
+    \item $\left|\mathbb{N}\right| = \left|\mathbb{Q}\right|$
+    \item El conjunto de números racionales $\mathbb{Q}$ es numerable.
+    \item La cardinalidad de $\mathbb{Q}$ es $\aleph_0$
+\end{itemize}
+
+\textbf{Conjuntos no numerables:}
+
+Un conjunto es \textbf{no numerable} si es infinito pero no es numerable. Es decir, el conjunto tiene "más" elementos que el conjunto $\mathbb{N}$.
+
+\textit{Ejemplo:}
+
+Demostremos que el intervalo $(0, 1)$ no es numerable.
+
+Para nuestra demostración utilizaremos nuevamente la \textbf{diagonal de Cantor}.
+
+Suponemos que el intervalo $(0, 1)$ es numerable, lo cual implica que:
+
+\begin{itemize}
+    \item Existe una \textbf{biyección} entre $\mathbb{N}$ y $(0, 1)$, es decir, podemos listar todos los números reales del intervalo en una secuencia infinita: $(0, 1) = \{r_1, r_2, r_3, ...\}$
+    \item Escribimos cada número de nuestra lista en su expansión decimal infinita (añadiendo ceros si es necesario). Para evitar ambigüedades asumiremos representaciones que no terminen en una sucesión infinita de nueves (como 0.24999... = 0.25).
+\end{itemize}
+
+Entonces:
+
+$r_1 = 0.d_{11}d_{12}d_{13}...$
+
+$r_2 = 0.d_{21}d_{22}d_{23}...$
+
+$r_3 = 0.d_{31}d_{32}d_{33}...$
+
+$\dots$
+
+Donde cada $d_{ij}$ es un dígito entre $0$ a $9$.
+
+Podemos generar un número real conocido como el \textbf{número de Cantor}:
+
+$X = 0.x_1x_2x_3...$
+
+De tal manera que cada dígito $x_i$ es distinto al dígito de la diagonal de nuestra lista $d_{ij}$
+
+Una regla sencilla para construir los digitos de $X$ sería:
+
+$
+x_i = 
+\begin{cases}
+    4 \, \text{si } d_{ij} \neq 4 \\
+    5 \, \text{si } d_{ij} = 4
+\end{cases}
+$
+
+Esto nos asegura que:
+
+\begin{itemize}
+    \item $r_1 \neq X$, ya que $x_1 \neq d_{11}$
+    \item $r_2 \neq X$, ya que $x_2 \neq d_{22}$
+    \item $r_3 \neq X$, ya que $x_3 \neq d_{33}$
+    \item $\dots$
+\end{itemize}
+
+Entonces, hemos llegado a una \textbf{contradicción}, ya que no hemos sido capaces de "listar" al número de Cantor.
+
+Por lo tanto, podemos concluir que $\left|\mathbb{N}\right| < \left|(0, 1)\right|$
+
+\end{document}
