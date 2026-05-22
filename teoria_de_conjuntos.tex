@@ -316,23 +316,31 @@ $\qed$
     
 \[f: A \to B \text{ es sobreyectiva si } \forall b \in B, \exists a \in A \mid f(a) = b\]
 
-En otras palabras: $\text{Im}(f) = B$
+En otras palabras: 
+
+\[\text{Im($f$)} = B\]
 
 \textit{Ejemplo:}
 
 Demostrar si la función $f: \mathbb{R} \to \mathbb{R}, f(x) = 2x + 1$ es sobreyectiva. 
 
-Sea $y \in \text{Codom}(f) = \mathbb{R}$ arbitrario, se necesita demostrar que existe $x \in \text{Dom}(f) = \mathbb{R}$ tal que $f(x) = y$
+PD: $\forall y \in \text{Codom($f$)} = \mathbb{R}, \exists x \in \text{Dom($f$)} = \mathbb{R}$, implica que $f(x) = y$
 
-Se tiene que $y = 2x + 1 \implies y - 1 = 2x \implies x = \frac{y - 1}{2}$
+\underline{Hipótesis:}
 
-Evaluar $x$ en la función $f$:
+Sea $y \in \text{Codom($f$)}$ arbitrario.
 
-$f(x) = 2x + 1 = 2(\frac{y - 1}{2}) + 1 = y - 1 + 1 = y$ 
+Demostrar que existe $x \in \text{Dom($f$)} = \mathbb{R}$, tal que:
 
-Como $y \in \text{Codom}(f) = \mathbb{R}$, el valor de $x = \frac{y - 1}{2}$ está bien definido para $ \text{Dom}(f) = \mathbb{R}$, implica que para cualquier $y \in \text{Codom}(f) = \mathbb{R}$ existe al menos un $x \in \text{Dom}(f) = \mathbb{R}$
+$f(x) = y$
 
-Por lo tanto, la función $f$ es sobreyectiva.
+Se tiene que $\displaystyle 2x + 1 = y \implies x = \frac{y - 1}{2}$
+
+Como $x$ está definida por $\displaystyle \frac{y - 1}{2}$, se observa que dicha expresión no supone restricciones a los números reales, implica que $x \in \mathbb{R} = \text{Dom($f$)}$.
+
+Luego, se evalúa $x$ en la función $f$:
+
+$\displaystyle f(x) = 2\Big(\frac{y - 1}{2}\Big) + 1 = y - 1 + 1 =  y$
 
 $\qed$
 
@@ -340,17 +348,27 @@ $\qed$
 
 Demostrar que la función $f: \mathbb{R} \to \mathbb{R}^+ \cup \{0\}$, definida por $f(x) = x^2$ es sobreyectiva.
 
-Sea $y \in \mathbb{R}^+ \cup \{0\}$ arbitrario, se quiere demostrar que existe $x \in \mathbb{R}$ tal que $f(x)= y$
+PD: $\forall y \in \text{Codom($f$)} = \mathbb{R}^+ \cup \{0\}, \exists x \in \text{Dom($f$)} = \mathbb{R}$, tal que $f(x) = y$.
 
-Expresar $y = x^2 \implies \sqrt{y} = \sqrt{x^2} \implies \sqrt{y} = \left|x\right| \implies x = \pm \sqrt{y}$
+\underline{Hipótesis:}
+
+Dado $y \in \text{Codom($f$)}$ arbitrario.
+
+Demostrar que existe $x \in \text{Dom($f$)} = \mathbb{R}$, tal que:
+
+$f(x) = y$
+
+Se sabe que $x^2 = y \implies x = \pm \sqrt{y}$
+
+Por hipótesis, se tiene que $y \in \text{Codom($f$)}$ y $\text{Codom($f$)} = \mathbb{R}^+ \cup \{0\} \implies y \ge 0$.
+
+Por lo tanto, $y$ está bien definida para $\sqrt{y}$, con $\sqrt{y} \ge 0$.
+
+Luego, $x = \pm \sqrt{y}$ implica que $x$ puede ser positivo, negativo o cero, en otras palabras, $x \in \mathbb{R} = \text{Dom($f$)}$.
 
 Evaluar $x$ en la función $f$:
 
-$f(x) = x^2 = (\pm \sqrt{y})^2 = y$
-
-Como $y \ge 0$, el valor $x = \pm \sqrt{y}$ está bien definido en $\mathbb{R}$. Esto implica que para cualquier $y \in \mathbb{R}^+ \cup \{0\}$ existe al menos un $x \in \mathbb{R}$.
-
-Por lo tanto, la función $f$ es sobreyectiva.
+$f(x) = (\pm \sqrt{y})^2 = y$
 
 $\qed$
 
@@ -370,15 +388,15 @@ Dada la función $f(x) = 3x - 1$
 
 Es sabido que la función $f(x)$ es biyectiva, entonces tiene función inversa:
 
-$y = 3x - 1 \implies y + 1 = 3x \implies x = \frac{y + 1}{3} \implies f^{-1}(x) = \frac{x + 1}{3}$
+$\displaystyle y = 3x - 1 \implies y + 1 = 3x \implies x = \frac{y + 1}{3} \implies f^{-1}(x) = \frac{x + 1}{3}$
 
 Evaluar $f$ en $f^{-1}$:
 
-$f^{-1}(f(x)) = \frac{(3x - 1) + 1}{3} = \frac{3x}{3} = x$
+$\displaystyle f^{-1}(f(x)) = \frac{(3x - 1) + 1}{3} = \frac{3x}{3} = x$
 
 También es posible evaluar $f^{-1}$ en $f$:
 
-$f(f^{-1}) = 3(\frac{x + 1}{3}) - 1 = x + 1 - 1 = x$
+$\displaystyle f(f^{-1}) = 3\Big(\frac{x + 1}{3}\Big) - 1 = x + 1 - 1 = x$
 
 $\qed$
 
@@ -386,13 +404,15 @@ $\qed$
 
 Demostrar si la función $f: \left[0, \infty\right) \to \left[-1, \infty\right)$, definida por $f(x) = x^2 - 1$ tiene inversa $f^{-1}$
 
-Primero, se tiene que demostrar que la función $f$ es \text{biyectiva}:
+Primero, se tiene que demostrar que la función $f$ es \textbf{biyectiva}:
 
-a) Demostrar que $f$ es inyectiva:
+a) Demostrar que $f$ es \textbf{inyectiva}:
 
-Se supone que $f(a) = f(b), \forall a,b \in \left[0, \infty \right)$, entonces $a^2 - 1 = b^2 - 1$
+Se supone que $f(a) = f(b); \  \forall a,b \in \left[0, \infty \right)$.
 
-Por propiedad de cancelación se tiene que $a^2 = b^2 \implies a^2 - b^2 = 0 \implies (a - b)(a + b) = 0$
+Entonces $a^2 - 1 = b^2 - 1$.
+
+Por \textbf{propiedad de cancelación} se tiene que $a^2 = b^2 \implies a^2 - b^2 = 0 \implies (a - b)(a + b) = 0$
 
 Como $a, b \in \left[0, \infty \right)$, implica que $a$ y $b$ son positivos o iguales que cero.
 
@@ -400,19 +420,29 @@ Entonces, no se puede dar que $a \neq b$, ya que el producto nunca podría ser i
 
 Por lo tanto, $a = b$
 
-b) Demostrar que $f$ es sobreyectiva:
+b) Demostrar que $f$ es \textbf{sobreyectiva}:
 
-Dado $y \in \left[-1, \infty \right)$ arbitrario, demostrar que existe un $x \in \left[0, \infty \right)$, tal que $f(x) = y$
+PD: $\forall b \in [-1, \infty), \exists a \in [0, \infty)$ tal que $f(a) = b$
 
-Se puede expresar $y = x^2 - 1 \implies y + 1 = x^2 \implies \sqrt{y + 1} = \sqrt{x^2} \implies \left|x\right| = \sqrt{y + 1} \implies x = \pm \sqrt{y + 1}$
+\underline{Hipótesis:}
 
-Como $x \in \left[0, \infty \right)$, se debe desestimar la parte negativa de la expresión $x = \pm \sqrt{y + 1}$, entonces: $x = \sqrt{y + 1}$
+Dado $b \in [-1, \infty)$ arbitrario.
 
-Evaluar $x$ en la función $f$:
+Demostrar que existe al menos un $a \in [0, \infty)$ tal que $f(a) = b$.
 
-$f(x) = x^2 - 1 = (\sqrt{y + 1})^2 - 1 = y + 1 - 1 = y$
+Se tiene que $a^2 - 1 = b \implies a = \pm \sqrt{b + 1}$.
 
-Como $y \ge -1$, entonces $x = \sqrt{y + 1}$ está bien definido en $\left[0, \infty \right)$, implica que para cualquier $y \in \left[-1, \infty \right)$ existe un único (ya se ha demostrado que $f$ es inyectiva) $x \in \left[0, \infty \right)$
+Desestimar la parte negativa de $\pm \sqrt{b + 1}$, implica que:
+
+$a = \sqrt{b + 1}$.
+
+Como $b \in [-1, \infty)$, significa que $b$ está bien definida para $\sqrt{b + 1}$, con $\sqrt{b + 1} \ge 0$.  
+
+Dado que $a = \sqrt{b + 1}$, $\sqrt{b + 1} \ge 0 \implies \sqrt{b + 1} \in [0, \infty)$, se tiene que $a \in [0, \infty)$. 
+
+Evaluar $a$ en la función $f$:
+
+$f(a) = (\sqrt{b + 1})^2 - 1 = b + 1 - 1 = b$
 
 Por lo tanto, la función $f$ es sobreyectiva.
 
@@ -513,40 +543,40 @@ $f \circ g: \left[8, \infty \right) \to \mathbb{R}$, definida por $(f \circ g)(x
 
 Calcular $(f \circ g)$ para: 
 
-$g: \mathbb{R} - \{0\} \to \mathbb{R} \text{, definido por } g(x) = \frac{1}{x}$ 
+$\displaystyle g: \mathbb{R} - \{0\} \to \mathbb{R} \text{, definido por } g(x) = \frac{1}{x}$ 
 
-$f: \mathbb{R} - \{5\} \to \mathbb{R} \text{, definido por } f(x) = \frac{1}{x-5}$
+$\displaystyle f: \mathbb{R} - \{5\} \to \mathbb{R} \text{, definido por } f(x) = \frac{1}{x-5}$
 
 Si se cumple que $\text{Ran}(g) \subseteq \text{Dom}(f)$, entonces:
 
 $f \circ g: \mathbb{R} - \{0\} \to \mathbb{R} - \{5\}$ (*)
 
-\newpage
 Hallar $\text{Ran}(g)$: 
 
 Sea $y \in \text{Codom}(x) = \mathbb{R}$
 
-Por definición de rango se tiene $y = g(x) \implies y = \frac{1}{x} \implies x = \frac{1}{y}, \forall x \in \mathbb{R} - \{0\}$
+Por definición de rango se tiene $\displaystyle y = g(x) \implies y = \frac{1}{x} \implies x = \frac{1}{y}, \forall x \in \mathbb{R} - \{0\}$
 
 Se observa que $x$ no está definido cuando $y = 0$, implica que $\text{Ran}(g) = \mathbb{R} - \{0\}$
 
 Como $\text{Ran}(g) = \mathbb{R} - \{0\} \not\subseteq \text{Dom}(f) = \mathbb{R} - \{5\}$, no se cumple (*)
 
-Definir $f(g(x)) = \frac{1}{\frac{1}{x} - 5}$
+Definir $\displaystyle f(g(x)) = \frac{1}{\frac{1}{x} - 5}$
 
 Si se analiza el \textbf{denominador}, se podrán encontrar dos valores de "conflicto":
 
 \begin{itemize}
-    \item $x = 0 \implies f(g(0)) = \frac{1}{\frac{1}{0} - 5}$
-    \item $x = \frac{1}{5} \implies f(g(\frac{1}{5})) = \frac{1}{\frac{1}{\frac{1}{5}} - 5} = \frac{1}{5 - 5} = \frac{1}{0}$
+    \item $\displaystyle x = 0 \implies f(g(0)) = \frac{1}{\frac{1}{0} - 5}$
+    \item $\displaystyle x = \frac{1}{5} \implies f\Big(g\Big(\frac{1}{5}\Big)\Big) = \frac{1}{\frac{1}{\frac{1}{5}} - 5} = \frac{1}{5 - 5} = \frac{1}{0}$
 \end{itemize}
 
 El dominio de $f(g(x))$ está condicionado por $\mathbb{R} - \{0, \frac{1}{5}\}$
 
 El codominio de $f(g(x))$ es $\mathbb{R}$
 
-Por lo tanto: $f \circ g: \mathbb{R} - \{0, \frac{1}{5}\} \to \mathbb{R}, (f \circ g)(x) = \frac{1}{\frac{1}{x} - 5}$
+Por lo tanto: $f \circ g: \mathbb{R} - \{0, \frac{1}{5}\} \to \mathbb{R}$,  $\displaystyle (f \circ g)(x) = \frac{1}{\frac{1}{x} - 5}$
 
+\newpage
 \textit{Ejemplo:}
 
 Calcular $(f \circ g)$ para: 
@@ -655,7 +685,6 @@ $\left|A\right| = k \implies \left|P(A)\right| = 2^k$
 
 Donde el conjunto $A = \{a_1, a_2, ..., a_k\}$
 
-\newpage
 \textbf{3. Paso de inducción:}
 
 PD: Si la hipótesis de inducción es cierta, entonces, un conjunto $A'$ con $k + 1$ elementos implica que $\left|P(A')\right| = 2^{k + 1}$
@@ -812,15 +841,24 @@ Por lo tanto, la función $f$ es inyectiva.
 
 b) Demostrar si la función es \textbf{sobreyectiva:}
 
-Dado $b \in \text{Codom}(f) = P$ arbitrario, es necesario demostrar que existe un único (ya se demostró que $f$ es inyectiva) $n \in \text{Dom}(f) = \mathbb{N}$, tal que $f(n) = b$
+PD: $\forall b \in \text{Codom($f$)} = P, \exists a \in \text{Dom($f$)} = P$, tal que $f(a) = b$.
 
-Se tiene que $b = 2n \implies n = \frac{b}{2}$
+\newpage
+\underline{Hipótesis:}
 
-Evaluar $n$ en la función $f$:
+Sea $b \in \text{Codom($f$)}$ arbitrario.
 
-$f(n) = 2n = 2(\frac{b}{2}) = b$
+Demostrar que existe $a \in \text{Dom($f$)}$, tal que $f(a) = b$
 
-Como $b$ es un par positivo, $x = \frac{b}{2}$ está bien definido en $\text{Dom}(f) = \mathbb{N}$, implica que para cualquier $b \in P$, existe un único $a \in \mathbb{N}$
+Se sabe que $\displaystyle 2a = b \implies a = \frac{b}{2}$
+
+Dado que $b \in \text{Codom($f$)} = P$, entonces $b = 2k$, con $k \in \mathbb{N}$.
+
+Por lo tanto, $\displaystyle a = \frac{b}{2} \implies \frac{2k}{2} = k \implies a \in \mathbb{N} = \text{Dom($f$)}$.
+
+Evaluar $a$ en la función $f$:
+
+$\displaystyle f(a) = 2\Big(\frac{b}{2}\Big) = b$
 
 Entonces, la función $f$ es sobreyectiva.
 
@@ -850,7 +888,7 @@ f(n) =
 \end{cases}
 $
 
-a) Demostrar si $f$ es inyectiva:
+a) Demostrar si $f$ es \textbf{inyectiva}:
 
 \underline{Caso No. 1:} 
 
@@ -858,23 +896,23 @@ Considerando $a, b \in \text{Dom}(f) = \mathbb{N}$, siendo éstos números pares
 
 Suponer que $f(a) = f(b)$, entonces:
 
-$\frac{a}{2} = \frac{b}{2} \implies \frac{a}{2} - \frac{b}{2} = 0 \implies \frac{a - b}{2} = 0 \implies (\frac{1}{2})(a - b) = 0$
+$\displaystyle \frac{a}{2} = \frac{b}{2} \implies \frac{a}{2} - \frac{b}{2} = 0 \implies \frac{a - b}{2} = 0 \implies \Big(\frac{1}{2}\Big)(a - b) = 0$
 
 Implica inevitablemente que $a - b = 0 \implies a = b$
 
-Cuando $n$ es par se tiene que:
+Cuando $a$ es par se tiene que:
 
-$f(0) = \frac{0}{2} = 0$
+$\displaystyle f(0) = \frac{0}{2} = 0$
 
-$f(2) = \frac{2}{2} = 1$
+$\displaystyle f(2) = \frac{2}{2} = 1$
 
-$f(4) = \frac{4}{2} = 2$
+$\displaystyle f(4) = \frac{4}{2} = 2$
 
-$f(6) = \frac{6}{2} = 3$
+$\displaystyle f(6) = \frac{6}{2} = 3$
 
-$\dots$
+$\displaystyle \dots$
 
-Se puede observar que cuando $n$ es par, las imágenes serán los enteros positivos, incluyendo al cero.
+Se puede observar que cuando $a$ es par, las imágenes serán los enteros positivos, incluyendo al cero.
 
 \underline{Caso No. 2:} 
 
@@ -882,23 +920,23 @@ Tomar en cuenta que $a, b \in \text{Dom}(f) = \mathbb{N}$, siendo éstos número
 
 Nuevamente suponer que $f(a) = f(b)$, entonces:
 
-$-\frac{a + 1}{2} = -\frac{b + 1}{2} \implies \frac{a + 1}{2} = \frac{b + 1}{2} \implies \frac{a + 1}{2} - \frac{b + 1}{2} = 0 \implies \frac{a + 1 -(b + 1)}{2} = 0 \implies \frac{a - b}{2} = 0 \implies (\frac{1}{2})(a - b) = 0$
+$\displaystyle -\frac{a + 1}{2} = -\frac{b + 1}{2} \implies \frac{a + 1}{2} = \frac{b + 1}{2} \implies \frac{a + 1}{2} - \frac{b + 1}{2} = 0 \implies \frac{a + 1 -(b + 1)}{2} = 0 \implies \frac{a - b}{2} = 0 \implies \Big(\frac{1}{2}\Big)(a - b) = 0$
 
 Implica que $a - b = 0 \implies a = b$
 
-Cuando $n$ es impar se tiene:
+Cuando $a$ es impar se tiene:
 
-$f(1) = -\frac{1 + 1}{2} = -1$
+$\displaystyle f(1) = -\frac{1 + 1}{2} = -1$
 
-$f(3) = -\frac{3 + 1}{2} = -2$
+$\displaystyle f(3) = -\frac{3 + 1}{2} = -2$
 
-$f(5) = -\frac{5 + 1}{2} = -3$
+$\displaystyle f(5) = -\frac{5 + 1}{2} = -3$
 
-$f(7) = -\frac{7 + 1}{2} = -4$
+$\displaystyle f(7) = -\frac{7 + 1}{2} = -4$
 
 $\dots$
 
-Cuando $n$ es un número impar, las imágenes corresponden a los enteros negativos.
+Cuando $a$ es un número impar, las imágenes corresponden a los enteros negativos.
 
 \underline{Caso No. 3:} 
 
@@ -910,38 +948,49 @@ Esto asegura que ningún $n$ par generará una imagen correspondiente a una $n$ 
 
 Por las demostraciones en los casos anteriores, es posible concluir que la función $f$ es inyectiva.
 
-b) Demostrar si $f$ es sobreyectiva:
+b) Demostrar si $f$ es \textbf{sobreyectiva}:
 
 \underline{Caso No. 1:} 
 
-Suponiendo cualquier $z$ entero positivo o cero.
+Suponiendo cualquier $b \ge 0$.
 
-Dado $z \in \text{Codom}(f) = \mathbb{Z} \text{ y } z \ge 0$, se quiere demostrar que existe un único $n \in \text{Dom}(f) = \mathbb{N}$, con $n$ par, tal que $f(n) = z$.
+PD: $\forall b \in \text{Codom($f$)} = \mathbb{Z} \text{ con } b \ge 0, \exists a \in \text{Dom($f$)} = \mathbb{N}$, tal que $f(a) = b$.
 
-Por definición de rango se tiene $z = f(n) \implies z = \frac{n}{2} \implies n = 2z$
+\underline{Hipótesis:}
 
-Evaluar $n$ en la función $f$:
+Sea $b \in \text{Codom($f$)}$ arbitrario, con la única condición que sea mayor o igual que cero.
 
-$f(n) = \frac{n}{2} = \frac{2z}{2} = z$
+Demostrar que existe al menos un $a \in \text{Dom($f$)}$, tal que $f(a) = b$.
 
-Como $z$ es un entero positivo o cero, $n = 2z$ está definido correctamente para cualquier natural par (incluyendo al cero), implica que para todo $z \in \mathbb{Z} \text{ y } z \ge 0$, existe un único $n \in \mathbb{N}$, siendo $n$ un número par.
+Entonces, se tiene $\displaystyle \frac{a}{2} = b \implies a = 2b$.
 
-\newpage
+Como $a = 2b$ y $b \ge 0$, implica que $a$ es un número par positivo, significa que $a \in \mathbb{N}$.
+
+Evaluar $a$ en la función $f$:
+
+$\displaystyle f(a) = \frac{(2b)}{2} = b$
+
 \underline{Caso No. 2:} 
 
-Ahora se supondrá cualquier $z$ entero negativo.
+Ahora se supondrá cualquier $b < 0$.
 
-Dado $z \in \text{Codom}(f) = \mathbb{Z} \text{ y } z < 0$, se necesita demostrar que existe un único $n \in \text{Dom}(f) = \mathbb{N}$, con $n$ impar.
+PD: $\forall b \in \text{Codom($f$)} = \mathbb{Z} \text{ con } b < 0, \exists a \in \text{Dom($f$)} = \mathbb{N}$.
 
-Por definición de rango $z = f(n) \implies z = -\frac{n + 1}{2} \implies -z = \frac{n + 1}{2} \implies n = -2z - 1$
+\underline{Hipótesis:}
 
-Evaluar $n$ en la función $f$:
+Dado $b \in \text{Codom($f$)}$ arbitrario, con la única condición que $b < 0$.
 
-$f(n) = -\frac{n + 1}{2} = -\frac{(-2z - 1) + 1}{2} = -\frac{-2z}{2} = -(-z) = z$
+Demostrar que $a \in \text{Dom($f$)}$, tal que $f(a) = b$.
 
-Como $z$ es un entero negativo, $n = -2z - 1$ está bien definido para cualquier natural impar, implica que para todo $z \in \text{Codom}(f) = \mathbb{Z} \text{ y } z < 0$, existe un único $n \in \mathbb{N}$, siendo $n$ un número impar.
+Se tiene que $\displaystyle -\frac{a + 1}{2} = b \implies a = -2b - 1$.
 
-Debido a los dos casos anteriores, se observa que para cualquier $z \in \mathbb{Z}$ (se cubrieron enteros negativos, cero y positivos), existe un único $n \in \mathbb{N}$ (se consideraron los naturales pares e impares), tal que $f(n) = z$.
+Como $b \in \text{Codom($f$)} = \mathbb{Z} \ \land \ b < 0 \implies - 2b - 1 > 0 \ \land \ -2b - 1 \text{ es impar, por lo tanto, } a \in \mathbb{N}$.
+
+Evaluar $a$ en la función $f$:
+
+$\displaystyle f(a) = -\frac{(-2b - 1) + 1}{2} = -\frac{-2b}{2} = -(-b) = b$
+
+Debido a los dos casos anteriores, se observa que para cualquier $b \in \mathbb{Z}$ (se cubrieron enteros negativos, cero y positivos), existe $a \in \mathbb{N}$ (se consideraron los naturales pares e impares), tal que $f(a) = b$.
 
 Entonces, $f$ es sobreyectiva.
 
@@ -1981,15 +2030,23 @@ Entonces, la función $f$ es inyectiva.
 
 b) Demostrar que la función $f$ es sobreyectiva:
 
-Sea $d \in D$ arbitrario, se necesita demostrar que existe un único (ya se ha demostrado que $f$ es inyectivo) elemento $p \in P$ tal que $f(p) = d$
+PD: $\forall d \in \text{Codom($f$)} = D, \exists p \in \text{Dom($f$)} = P$, tal que $f(p) = d$.
 
-Por definición de imagen es sabido que $f(p) = d \implies 5p = d \implies p = \frac{d}{5}$
+\underline{Hipótesis:}
+
+Sea $d \in \text{Codom($f$)}$ arbitrario.
+
+Demostrar que existe $p \in \text{Dom($f$)}$, tal que $f(p) = d$.
+
+Se sabe que $\displaystyle 5p = d \implies p = \frac{d}{5}$
+
+Como $d \in \text{Codom($f$)}$ y $\text{Codom($f$)} = D$, implica que $d = 2 \times 5 \times k$, con $k \in \mathbb{N}$.
+
+Se tiene que $\displaystyle p = \frac{2 \times 5 \times k}{5} = 2k$, significa que $p$ es un número par positivo, por lo tanto, $p \in P = \text{Dom($f$)}$.
 
 Evaluar $p$ en la función $f$:
 
-$f(p) = 5p = 5(\frac{d}{5}) = d$
-
-Como $d$ es un múltiplo positivo de 10, entonces $p = \frac{d}{5}$ está bien definido para $P$. Implica que para cualquier $d \in D$, existe un único $p \in P$.
+$\displaystyle f(p) = 5\Big(\frac{d}{5}\Big) = d$
 
 Entonces, la función $f$ es sobreyectiva.
 
@@ -2017,7 +2074,7 @@ f(z) =
 \end{cases}
 $
 
-a) Demostrar que $f$ es inyectiva:
+a) Demostrar que $f$ es \textbf{inyectiva}:
 
 \textbf{Caso No. 1:} 
 
@@ -2049,35 +2106,60 @@ Entonces, la función $f$ es inyectiva cuando los valores tienen signos distinto
 
 Por los tres casos anteriores, se concluye que la función $f$ es \textbf{inyectiva}.
 
-b) Demostrar que $f$ es sobreyectiva:
+b) Demostrar que $f$ es \textbf{sobreyectiva}:
 
 \textbf{Caso No. 1:}
 
-Dado un $b \in \mathbb{Z}^-$, con $b$ impar, se necesita demostrar que existe un único $z \in \mathbb{Z}$, con $z \ge 0$, tal que $f(z) = b$.
+PD: $\forall b \in \text{Codom($f$)} = \mathbb{Z}^-$ con $b$ impar, $\exists a \in \text{Dom($f$)} = \mathbb{Z}$, tal que $f(a) = b$.
 
-Por definición de imagen se tiene que $f(z) = b \implies -2z - 1 = b \implies -2z = b + 1 \implies z = -\frac{b + 1}{2}$
+\newpage
+\underline{Hipótesis:}
 
-Evaluar $z$ en la función $f$:
+Sea $b \in \text{Codom($f$)}$ arbitrario, con la única condición que $b$ sea impar.
 
-$f(z) = -2z - 1 = -2(-\frac{b + 1}{2}) - 1 = -2(\frac{-b - 1}{2}) - 1 = \frac{2b + 2}{2} - 1 = b + 1 - 1 = b$
+Demostrar que $a \in \text{Dom($f$)}$, tal que $f(a) = b$.
 
-Como $b$ es un entero negativo e impar, $z = -\frac{b + 1}{2}$ está bien definido para los enteros positivos incluyendo al número cero. Implica que para cualquier $b \in \mathbb{Z}^-$, con $b$ impar, existe un único elemento $z \in \mathbb{Z}$, con $z \ge 0$.
+Como $b \in \text{Codom($f$)} = \mathbb{Z}^- \ \land \ b \text{ es impar, significa que $b$ es un número impar negativo}.$ 
+
+Es posible expresar $b = -2k - 1$, con $k \in \mathbb{N} \cup \{0\}$.
+
+Debido a que $b$ es un impar negativo, aplica la primera parte de $f$:
+
+$\displaystyle -2a - 1 = b \implies a = -\frac{b + 1}{2} \implies a = -\frac{(-2k - 1) + 1}{2} \implies a = -\frac{-2k}{2} = k$.
+
+Por consiguiente, $a \in \mathbb{N} \cup \{0\}$ y como $\mathbb{N} \cup \{0\} \subseteq \mathbb{Z} \implies a \in \mathbb{Z}$.
+
+Evaluar $a$ en la función $f$:
+
+$\displaystyle f(a) = -2\Big(-\frac{b + 1}{2}\Big) - 1 = b + 1 - 1 = b$
 
 Entonces, la función $f$ es sobreyectiva.
 
 \textbf{Caso No. 2:}
 
-Dado un $b \in \mathbb{Z}^-$, con $b$ par, se necesita demostrar que existe un único $z \in \mathbb{Z}$, con $z < 0$, tal que $f(z) = b$.
+PD: $\forall b \in \text{Codom($f$)} = \mathbb{Z}^- \text{ con $b$ par }, \exists a \in \text{Dom($f$)} = \mathbb{Z}$, tal que $f(a) = b$.
 
-Se sabe por definición de rango que $f(z) = b \implies 2z = b \implies z = \frac{b}{2}$
+\underline{Hipótesis:}
 
-Evaluar $z$ en la función:
+Dado $b \in \text{Codom(f)}$ arbitrario, con la única condición que $b$ sea par. 
+  
+Demostrar que $a \in \text{Dom($f$)}$, tal que $f(a) = b$.
 
-$f(z) = 2z = 2(\frac{b}{2}) = b$
+Como $b \in \text{Codom($f$)} = \mathbb{Z}^- \ \land \ b \text{ es un número par, implica que $b$ es un número par negativo}.$
 
-Como $b$ es un entero negativo par, $z = \frac{b}{2}$ siempre estará definido para el conjunto de los números enteros negativos. Esto implica que para cualquier $b \in \mathbb{Z}^-$, con $b$ par, existe un único $z \in \mathbb{Z}$, con $z < 0$.
+Se puede expresar $b = -2k$, con $k \in \mathbb{N}$.
 
-Entonces, la función $f$ es sobreyectiva.
+Como $b$ es un número par negativo, aplica la segunda parte de la función $f$, es decir:
+
+$\displaystyle 2a = b \implies a = \frac{b}{2} \implies a = \frac{-2k}{2} = -k \in \mathbb{Z}^-$
+
+Entonces, se tiene $a \in \mathbb{Z}^-$, como $\mathbb{Z}^- \subseteq \mathbb{Z} \implies a \in \mathbb{Z}$.
+
+Se evalúa $a$ en la función $f$:
+
+$\displaystyle f(a) = 2\Big(\frac{b}{2}\Big) = b$
+
+Por lo tanto, la función $f$ es sobreyectiva. 
 
 Por los dos casos anteriores, se puede concluir que $f$ es una función \textbf{sobreyectiva}.
 
@@ -2387,7 +2469,6 @@ Ahora, se debe analizar su comportamiento futuro ante cualquier "cadena" (el nú
     \item Si después viene un número impar $3$, los tres estados dirán: "\textit{!Ya no soy par¡ Rechazado}".
 \end{itemize}
 
-\newpage
 Demostrar que la relación $\sim$ es una relación de equivalencia, para lo cual debe cumplir con ser:
 
 \begin{itemize}
